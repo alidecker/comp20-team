@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Listing</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<link href="add_listing.css" rel="stylesheet">
+	<script src="add_listing.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+</head>
+<body>
+	<header>Tufts Sublet Finder</header>
+		<div id="navbar">
+	        <ul id="nav">
+	           	<li><a href="map.html">Home</a></li>
+		        <!-- <li><a href="messages.html">Messages</a></li> -->
+		        <li id="selected"><a href="add_listing.html">Add Listings</a></li>
+		        <li><a href="contact_page.html">Contact</a></li>
+		        <li><a href="profile.html">Profile</a></li>
+		        <li><a id="logout" onclick="logOut()">Log Out</a></li>
+	        </ul>
+	    </div>
+	<div id="add-listing-body">
+			<h2>Add Listing</h2>
+			<div id="title">
+				<p1>Listing Title<input type="text" id="title-input" name="title-input"/></p1>
+			</div>
+			<!--Do we need an email box if this is linked to a user's account, with their Tufts email already saved?-->
+			<div id="email">
+				<p>Contact Email<span class="required">*</span><input type="text" id="email-input" name="email-input"/></p>
+			</div>	
+			<div id="address">
+				<p>Address 1<span class="required">*</span><input type="text" id="address-1" name="address-1"/></p>
+				<p>Address 2 (optional)<input type="text" id="address-2" name="address-2"/></p>
+				<p>City<span class="required">*</span><input type="text" id="city-box" name="city-box"/></p>
+			</div>
+			<div id="price-and-security-deposit">
+				<div class="price-div">
+					<p>Price Per Month (USD)<span class="required">*</span></p>
+					<div class="price-input">
+						<input type="text" class="price-box" id="price" name="price-box"/>
+					</div>
+				</div>
+				<div class="price-div">
+					<p>Security Deposit (USD)<span class="required">*</span></p>
+					<div class="price-input">
+						<input type="text" class="price-box" id="security-deposit" name="security-deposit-box"/>
+					</div>
+				</div>
+			</div>
+			<div id="semester">
+				<p>Semester(s) Available<span class="required">*</span></p>
+				<div class="checkboxes">
+					<p><input id="summer-check" type="checkbox">Summer</p>
+					<p><input id="fall-check" type="checkbox">Fall</p>
+					<p><input id="spring-check" type="checkbox">Spring</p>
+				</div>
+			</div>
+			<div id="specifications">
+					<p>Features</p>
+					<div class="checkboxes">
+						<p><input id="furnished" type="checkbox">Furnished</p>
+						<p><input id="pets" type="checkbox">Pet Friendly</p>
+						<p><input id="no-smoking" type="checkbox">No Smoking</p>
+						<p><input id="utilities" type="checkbox">Utilities Included</p>
+					</div>
+			</div>
+			<div id="pic-and-details">
+				<div id="pic-upload">
+					<p>Choose image(s)</p>
+					<input id="browse" type="file" onchange="previewFiles()" multiple>
+					<div id="preview"></div>
+					<button type="button" id="next" onclick="nextImage()">Next</button>
+					<!-- <input type='file' onchange="readURL(this);" multiple="" />
+    				<img id="blah" src="#" alt="your image" /> -->
+				</div>
+			</div>
+	</div>
+	<button type="button" id="post-button" onclick="postListing()">Post Listing</button>
+	<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+		    apiKey: "AIzaSyBjaMxOs_yfhBLWVhdqrrWFN2uExKdmqRc",
+		    authDomain: "comp20-sublets.firebaseapp.com",
+		    databaseURL: "https://comp20-sublets.firebaseio.com",
+		    projectId: "comp20-sublets",
+		    storageBucket: "comp20-sublets.appspot.com",
+		    messagingSenderId: "288024894813"
+		};
+		firebase.initializeApp(config);
+		// Get a reference to the database service
+		var database = firebase.database();
+		var storage = firebase.storage();
+		var auth = firebase.auth();
+
+		function logOut() {
+			console.log("You are logged out");
+        	window.location.assign("index.html");
+        	firebase.auth().signOut();
+		}
+	</script>
+	<script src="add_listing.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<meta name="referrer" content="origin">
+	<title>Contact Us</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="contact_page.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- <script>
+		$(document).ready(function() {
+			$('#submitBtn').click(function () {
+				console.log('Form would submit now');
+				location.href = "contactThankYou.html";
+			})
+		})
+	</script> -->
+</head>
+
+<body>
+	<header>Tufts Sublet Finder</header>
+	<div id="navbar">
+        <ul id="nav">
+           	<li><a href="map.html">Home</a></li>
+		        <li><a href="add_listing.html">Add Listings</a></li>
+		        <li id="selected"><a href="contact_page.html">Contact</a></li>
+		        <li><a href="profile.html">Profile</a></li>
+		        <li><a id="logout" onclick="logOut()" ">Log Out</a></li>
+        </ul>
+    </div>
+	<h2>Contact Us</h2>
+	<form method="POST" action="http://formspree.io/tufts.sublet2017@gmail.com">
+	<input type="email" name="email" placeholder="Your email">
+	<textarea name="message" placeholder="Your message"></textarea>
+	<button id="postbutton" type="submit" onclick="getElementById('contactForm').innerHTML = Thank You">Send</button>
+  	</form>
+  	<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+  	<script>
+		// Initialize Firebase
+		var config = {
+		    apiKey: "AIzaSyBjaMxOs_yfhBLWVhdqrrWFN2uExKdmqRc",
+		    authDomain: "comp20-sublets.firebaseapp.com",
+		    databaseURL: "https://comp20-sublets.firebaseio.com",
+		    projectId: "comp20-sublets",
+		    storageBucket: "comp20-sublets.appspot.com",
+		    messagingSenderId: "288024894813"
+		};
+		firebase.initializeApp(config);
+		// Get a reference to the database service
+		var database = firebase.database();
+		var storage = firebase.storage();
+		var auth = firebase.auth();
+
+		function logOut() {
+			console.log("You are logged out");
+        	window.location.assign("index.html");
+        	firebase.auth().signOut();
+		}
+	</script>
+</body>
+</html>

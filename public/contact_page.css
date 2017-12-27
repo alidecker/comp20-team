@@ -1,0 +1,128 @@
+html {
+	height: 100%;
+	width: 100%;
+	font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+body {
+	padding: 15px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: column;
+	flex-wrap: nowrap;
+}
+header{
+	font-size: 230%;
+	margin-top: 15px;
+}
+#nav{
+    list-style-type: none;
+    margin-right: 40px;
+    margin-bottom: 35px;
+}
+#nav li{
+    display: inline;
+    padding: 0px 9px 0px 9px;}
+#nav a:link{
+    color: #808080;
+    text-decoration: none;}
+#nav a:visited{
+    color: #808080;}
+#nav a:hover{
+    color: #000000;}
+#nav a:active{
+    color: #000000;}
+#logout{
+	cursor: pointer;
+	color: #808080;
+}
+h2{
+	font-weight: normal;
+}
+#contactForm input{
+	display: block;
+	margin: 10px 5px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+input, textarea {
+    color: black;
+    font-size: 15px;
+    width: 300px;
+    height: 110%;
+    border: 1px solid #BEBEBE;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    padding: 5px;
+    margin: 3px;
+}
+textarea[name="message"] {
+    padding-bottom: 200px;
+}
+
+#postbutton {
+    width: 100px;
+    height: 50px;
+    margin: 20px 0px 10px 20px;
+    background-color: #0D4F8B;
+    color: white;
+    font-size: 20px;
+}
+@media only screen and (max-width: 650px) and (min-width: 530px) {
+    body{
+        width: 450px;
+        height: auto;}
+}
+@media only screen and (max-width: 530px) {
+    body{
+        font-size: 11px;}
+    header{
+        font-size: 120%;}
+    #nav li{
+        font-size: 80%;}
+    input, textarea {
+        font-size: 10px;}
+    #postbutton {
+        width: 90px;
+        height: 30px;
+        margin: 10px 0px 5px 10px;
+        background-color: #0D4F8B;
+        color: white;
+        font-size: 13px;}
+@media only screen and (max-width: 480px) {
+    body{
+        width: 93%;
+        height: auto;}
+    input, textarea {
+    font-size: 10px;}
+    #postbutton {
+        width: 90px;
+        height: 30px;
+        margin: 10px 0px 5px 10px;
+        background-color: #0D4F8B;
+        color: white;
+        font-size: 13px;}
+}
+/*Retina display*/
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (max-device-width: 530px) { 
+    body {
+        margin: 0px;
+    }
+    header {
+        font-size: 32px;
+    }
+    #nav li{
+        font-size: 24px;
+        margin: 10px;
+        margin-bottom: 0px;
+    }
+    h2 {
+        font-size: 28px;
+        margin: 10px;
+        margin-top: 0px;
+    }
+}

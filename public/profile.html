@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<title>Profile</title>
+<meta charset="utf-8"/>
+<link href="profile.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$('.button').click(function(){
+	    if($(this).hasClass('active')){
+	        $(this).removeClass('active')
+	    } else {
+	        $(this).addClass('active')
+	    }
+	});
+</script>
+</head>
+<body>
+<!-- <script src="profile.js"></script>
+ -->
+<div class="header-bar">
+<header>Tufts Sublet Finder</header>
+	<div id="navbar">
+        <ul id="nav">
+           	<li><a href="map.html">Home</a></li>
+		    <li><a href="add_listing.html">Add Listings</a></li>
+	        <li><a href="contact_page.html">Contact</a></li>
+		    <li id="selected"><a href="profile.html">Profile</a></li>
+		    <li><a id = "logout" onclick = "logOut()">Log Out</a></li>
+        </ul>
+    </div>
+<!--</div>-->
+    <div id="profile">
+	    <h2>My Profile</h2>
+	    <p>Email: <!--display current email from Firebase--> </p>
+	    <p><input type="text" id="email" maxlength="256"></p>
+	 <!--    <p>Your posted listings: </p>
+	    	<p id = "houseTitle"></p>
+ -->	    	<!-- <p id = "houseAddress"></p>
+	    	<p id = "housePrice"></p> -->
+	    <!--get listings from Firebase-->
+	    <h2>Manage my preferences: </h2>
+	    <!--load in user's preferences from Firebase, and whatever they change will overwrite what is currently there-->
+	    <div id="semester">
+			<p>Semester(s) Available</p>
+			<div class="checkboxes">
+				<p><input id="summer-check" type="checkbox">Summer</p>
+				<p><input id="fall-check" type="checkbox">Fall</p>
+				<p><input id="spring-check" type="checkbox">Spring</p>
+			</div>
+		</div>
+		<div class="price-div">
+			<p>Maximum Price Per Month (USD)</p>
+			<div class="price-input">
+				<input type="text" class="price-box" id="price" name="price-box"/>
+			</div>
+		</div>
+		<div id="specifications">
+			<p>My preferences</p>
+			<div class="checkboxes">
+				<p><input id="furnished" type="checkbox">Furnished</p>
+				<p><input id="pets" type="checkbox">Pet Friendly</p>
+				<p><input id="no-smoking" type="checkbox">No Smoking</p>
+				<p><input id="utilities" type="checkbox">Utilities Included</p>
+			</div>
+		</div>
+	</div>
+	<button type="submit" id="saveBtn">Save <!--overwrite whatever the user changed in Firebase--></button>
+
+	  	<script>
+		// Initialize Firebase
+		var config = {
+		    apiKey: "AIzaSyBjaMxOs_yfhBLWVhdqrrWFN2uExKdmqRc",
+		    authDomain: "comp20-sublets.firebaseapp.com",
+		    databaseURL: "https://comp20-sublets.firebaseio.com",
+		    projectId: "comp20-sublets",
+		    storageBucket: "comp20-sublets.appspot.com",
+		    messagingSenderId: "288024894813"
+		};
+		firebase.initializeApp(config);
+		// Get a reference to the database service
+		var database = firebase.database();
+		var storage = firebase.storage();
+		var auth = firebase.auth();
+
+		function logOut() {
+			console.log("You are logged out");
+        	window.location.assign("index.html");
+        	firebase.auth().signOut();
+		}
+	</script>
+
+</body>

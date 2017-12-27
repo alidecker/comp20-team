@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Tufts Sublet Finder</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+		<link rel="stylesheet" href="map.css" />
+
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+		<script src="create_map.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		
+		<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+      	<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+		<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-app.js"></script>
+	  	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-auth.js"></script>
+	  	<script type="text/javascript">
+	  		var config = {
+			    apiKey: "AIzaSyBjaMxOs_yfhBLWVhdqrrWFN2uExKdmqRc",
+			    authDomain: "comp20-sublets.firebaseapp.com",
+			    databaseURL: "https://comp20-sublets.firebaseio.com",
+			    projectId: "comp20-sublets",
+			    storageBucket: "comp20-sublets.appspot.com",
+			    messagingSenderId: "288024894813"
+			};
+			firebase.initializeApp(config);
+			firebase.auth().onAuthStateChanged(firebaseUser => {
+			  	if (!firebaseUser) {
+			  		window.location = "index.html";
+			  	}
+			  });
+
+			function logOut() {
+				console.log("You are logged out");
+        		window.location.assign("index.html");
+        		firebase.auth().signOut();
+			}
+	  	</script>
+	  	<!-- <script src="https://www.gstatic.com/firebasejs/4.6.0/init.js"></script> -->
+		<script type="text/javascript"> 
+	    $(document).ready(function() {
+
+			// price range bar
+			$("#slider").slider({
+                range:true,
+                min: 0,
+                max: 2000,
+                values: [ 0, 2000 ],
+                slide: function( event, ui ) {
+                   $("#price").val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                }
+            });
+            $("#price").val( "$" + $( "#slider" ).slider( "values", 0 ) +
+               " - $" + $( "#slider" ).slider( "values", 1 ) );
+
+	    });
+		</script>
+	</head>
+	<body onload="init()" >
+		<header>Tufts Sublet Finder</header>
+			<div id="navbar">
+	            <ul id="nav">
+	                <li id="selected"><a href="map.html">Home</a></li>
+		        	<!-- <li><a href="messages.html">Messages</a></li> -->
+		        	<li><a href="add_listing.html">Add Listings</a></li>
+		        	<li><a href="contact_page.html">Contact</a></li>
+		        	<li><a href="profile.html">Profile</a></li>
+		        	<li><a id="logout" onclick="logOut()">Log Out</a></li>
+	            </ul>
+	        </div>
+	      
+	        <div id="mapbox">
+				<div id="map_canvas"></div>
+			</div>
+	        <div id="filters">
+			        <div id="pricebox">
+						<p id ="pricelabel">
+				         <label for="price">Price range: </label><input type="text" id="price">
+				      	</p>
+				        <div id="slider"></div>
+				        
+				    </div>
+				    <div id="semesters">
+				    	<p>Semester</p>
+				    	<div class="checkboxes">
+							<p><input id="summer-check" type="checkbox">Summer</p>
+							<p><input id="fall-check" type="checkbox">Fall</p>
+							<p><input id="spring-check" type="checkbox">Spring</p>
+						</div>
+				    </div>
+				    <div id="pricebtns"><button onclick="no_filter()" class="btn">Clear</button><button onclick="filter_map()" class="btn">Apply</button></div>
+		    </div>
+		    <div id="additional_info"></div>
+		    <div id="pictures"></div>
+
+	</body>
+</html>

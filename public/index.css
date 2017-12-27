@@ -1,0 +1,103 @@
+html {
+	height: 100%;
+	width: 100%;
+	font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	/*display: flex;*/
+	justify-content: space-around;
+	align-items: center;
+	text-align: center;
+	/*flex-direction: column;*/
+}
+
+header {
+	margin: 15px;
+	font-size: 230%;
+}
+
+input {
+	color: black;
+	font-size: 20px;
+	width: 300px;
+	height: 110%;
+	border: 1px solid #BEBEBE;
+	border-radius: 4px;
+	background-color: #FFFFFF;
+	padding: 5px;
+	margin: 3px;
+}
+
+button {
+	color: black;
+	font-size: 24px;
+	width: 100px;
+	border: 1px solid #BEBEBE;
+	background-color: #8fe1f7;
+	padding: 10px 0px 10px 0px;
+	margin: 20px 5px 5px 5px;
+}
+
+img {
+	width: 270px;
+	height: auto;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.buttons {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+@media only screen and (max-width: 650px) and (min-width: 530px) {
+    body{
+        width: 450px;
+        height: auto;}
+}
+@media only screen and (max-width: 530px) {
+    body{
+        font-size: 11px;
+        width: 350px;
+        height: auto;
+    }
+    header{
+        font-size: 120%;}
+}
+@media only screen and (max-width: 480px) {
+    body{
+        width: 93%;
+        height: auto;
+    }
+}
+/*Retina display*/
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (max-device-width: 530px) { 
+    img {
+    	width: 90%;
+    	height: auto;
+    	margin-top: 50px;
+    }
+    header {
+    	font-size: 90px;
+    	margin: 40px;
+    }
+    input, button{
+    	font-size: 60px;
+    	width: 80%;
+    	height: auto;
+    	padding: 20px;
+    	margin: 20px;
+    }
+    #btnLogin {
+    	height: 180px;
+    }
+}

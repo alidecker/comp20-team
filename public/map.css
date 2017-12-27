@@ -1,0 +1,93 @@
+html {
+	height: 100%;
+	width: 100%;
+	font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+body {
+	padding: 15px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: column;
+	flex-wrap: nowrap;
+}
+header{
+	font-size: 230%;
+	margin-top: 15px;
+}
+#nav{
+    list-style-type: none;
+    margin-right: 40px;
+    margin-bottom: 35px;
+}
+#nav li{
+    display: inline;
+    padding: 0px 9px 0px 9px;}
+#nav a:link{
+    color: #808080;
+    text-decoration: none;}
+#nav a:visited{
+    color: #808080;}
+#nav a:hover{
+    color: #000000;}
+#nav a:active{
+    color: #000000;}
+#logout, #selected{
+	cursor: pointer;
+	color: #808080;
+}
+#map_canvas{
+	height: 60%;
+	width: 45%;
+	position: absolute;
+}
+#filters{
+	margin-right: 55%;
+	margin-bottom: 15%;
+}
+#pricebox{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+label, #price{
+	border: 0; 
+	color: #808080;
+	font-size: 16px;
+}
+#slider{
+	margin-bottom: 10px;
+}
+#pricebtns{
+	display: flex;
+	flex-direction: row;
+}
+.btn{
+	background-color: #66cccc;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 8px;
+    flex: 1 auto;
+    align-self: center;
+}
+
+
+
+@media only screen and (max-width: 530px) {
+    body{
+        font-size: 11px;}
+    header{
+        font-size: 120%;}
+    #nav li{
+        font-size: 80%;}
+    #map_canvas{
+		height: 450px;
+		width: 320px;
+		position: relative;}
+	#filters{
+		margin: 0px;}
+}
